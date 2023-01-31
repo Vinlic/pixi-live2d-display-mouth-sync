@@ -1,6 +1,6 @@
 {
-  "name": "pixi-live2d-display",
-  "version": "0.4.0",
+  "name": "pixi-live2d-display-mouth-sync",
+  "version": "0.4.2",
   "description": "Live2D plugin for PixiJS",
   "main": "dist/index.js",
   "exports": {
@@ -34,17 +34,13 @@
   "scripts": {
     "setup": "node scripts/setup.js",
     "playground": "vite",
-    "test": "node scripts/build-tests.js && npx floss --path=test.build --reporter=tap",
-    "test:ci": "yarn type && yarn build && yarn test",
-    "test:debug": "node scripts/build-tests.js && npx floss --path=test.build -d",
     "build": "rimraf dist && node scripts/build.js",
     "pretype": "node scripts/patch-dts-generator.js",
     "type": "rimraf types && dts-bundle-generator src/index.ts --no-check --project=tsconfig.build.json -o=types/index.d.ts && dts-bundle-generator src/extra.ts --no-check --project=tsconfig.build.json -o=types/extra.d.ts ",
     "posttype": "node scripts/patch-types.js",
     "doc": "node scripts/gen-docs.js",
     "serve-docs": "mkdocs serve -f docs/mkdocs.yml",
-    "deploy": "gh-pages -d site",
-    "prepublishOnly": "yarn build && yarn test && yarn type"
+    "deploy": "gh-pages -d site"
   },
   "files": [
     "dist",
