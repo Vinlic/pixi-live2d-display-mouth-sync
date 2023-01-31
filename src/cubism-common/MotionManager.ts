@@ -381,9 +381,12 @@ export abstract class MotionManager<Motion = any, MotionSpec = any> extends Even
      * Move the mouth
      * 
      */
-     mouthSync(): number {
-        if (this.currentAnalyzer) {
-            return SoundManager.analyze(this.currentAnalyzer);
+    mouthSync(): number {
+        if(window.getMouthSyncValue)
+            return window.getMouthSyncValue();
+        const analyzer = this.currentAnalyzer;
+        if (analyzer) {
+            return SoundManager.analyze(analyzer);
         } else {
             return 0;
         }
